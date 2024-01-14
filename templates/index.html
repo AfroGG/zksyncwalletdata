@@ -1,0 +1,263 @@
+{{define "index.html"}}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard</title>
+    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/aos.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-clipboard-data">
+                            <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"></path>
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"></path>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"></path>
+                        </svg></div>
+                    <div class="sidebar-brand-text mx-3"><span><em>Zksync</em></span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link active" href="/index"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-table"></i><span>Table</span></a><a class="nav-link" href="/analyze"><i class="far fa-chart-bar"></i>Analyze</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/coffee"><i class="fas fa-coffee"></i><span>Coffee</span></a>
+                    <li class="nav-item"><a class="nav-link" href="/rule"><i class="fas fa-book"></i><span>Rule</span></a>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="me-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1"></li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow">
+                            <a href="https://twitter.com/lokiever11" target="_blank" class="btn btn-primary" style="margin: 12px;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0"><strong><em>Dashboard</em></strong></h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span><span style="color: rgb(0, 0, 0);">Total gas spent</span></span></div>
+                                            <div class="text-dark fw-bold h5 mb-0" id="totalGasSpent"><span>$</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-gas-pump fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-success py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-success fw-bold text-xs mb-1"><span><span style="color: rgb(0, 0, 0);">Sum of value in zksync</span></span></div>
+                                            <div class="text-dark fw-bold h5 mb-0" id="sumValue"><span>$</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-info py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-info fw-bold text-xs mb-1"><span><span style="color: rgb(0, 0, 0);">num of wallets</span></span></div>
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span class="text-center" id="num" style="padding-right: 0px;"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span><span style="color: rgb(0, 0, 0);">total txs</span></span></div>
+                                            <div class="text-dark fw-bold h5 mb-0" id="tx"><span></span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-space-shuttle fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-8">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0"><span style="color: rgb(0, 0, 0);">Overview</span></h6>
+                                </div>
+                                <div class="card-body" style="background: var(--bs-card-cap-bg);">
+                                    <div class="d-xl-flex visible chart-area" data-bss-hover-animate="bounce" style="display: none; color: var(--bs-link-color); transform: perspective(0px) translate(0px); background: var(--bs-card-bg); backdrop-filter: blur(0px) brightness(80%); display: flex; filter: brightness(98%) contrast(96%) grayscale(0%) hue-rotate(0deg) invert(0%); --bs-dark: #000000; --bs-dark-rgb: 0,0,0; --bs-body-bg: var(--bs-secondary-bg); border-color: var(--bs-emphasis-color);"><canvas id="myChart" data-bss-chart=""></canvas></div>                         
+                                    <div class="d-xl-flex visible chart-area" data-bss-hover-animate="bounce" style="display: none;color: var(--bs-link-color);transform: perspective(0px) translate(0px);background: var(--bs-card-bg);backdrop-filter: blur(0px) brightness(80%);display: flex;filter: brightness(98%) contrast(96%) grayscale(0%) hue-rotate(0deg) invert(0%);--bs-dark: #000000;--bs-dark-rgb: 0,0,0;--bs-body-bg: var(--bs-secondary-bg);border-color: var(--bs-emphasis-color);"><canvas id="myChart1" data-bss-chart=""></canvas></div>
+                                    <div class="d-xl-flex visible chart-area" data-bss-hover-animate="bounce" style="display: none;color: var(--bs-link-color);transform: perspective(0px) translate(0px);background: var(--bs-card-bg);backdrop-filter: blur(0px) brightness(80%);display: flex;filter: brightness(98%) contrast(96%) grayscale(0%) hue-rotate(0deg) invert(0%);--bs-dark: #000000;--bs-dark-rgb: 0,0,0;--bs-body-bg: var(--bs-secondary-bg);border-color: var(--bs-emphasis-color);"><canvas id="myChart2" data-bss-chart=""></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0"><span style="color: rgb(0, 0, 0);">Score Pie Chart</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area"><canvas id= "myChart3" data-bss-chart=""></canvas></div>
+                                    <div class="text-center small mt-4"></div>
+                                </div>
+                            </div>
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0"><span style="color: rgb(0, 0, 0);">ActiveWallets Pie Chart</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area"><canvas id= "myChart4" data-bss-chart=""></canvas></div>
+                                    <div class="text-center small mt-4"><span class="me-2"><i class="fas fa-circle text-danger text-primary" style="border-color: rgb(247,10,10);color: rgb(242,10,10);"></i>&nbsp;other</span><span class="me-2"><i class="fas fa-circle text-success"></i>&nbsp;Active in one week</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary fw-bold m-0"><span style="color: rgb(0, 0, 0);">Avg</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="small fw-bold"><span style="color: rgb(0, 0, 0);">Nonce</span><span class="float-end">50</span></h4>
+                                    <div class="progress mb-4" style="background: rgb(251,250,250);">
+                                        <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="visually-hidden">50</span></div>
+                                    </div>
+                                    <h4 class="small fw-bold"><span style="color: rgb(0, 0, 0);">ActiveWeeks</span><span class="float-end">40</span></h4>
+                                    <div class="progress mb-4" style="background: rgb(251,251,251);">
+                                        <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="visually-hidden">40</span></div>
+                                    </div>
+                                    <h4 class="small fw-bold"><span style="color: rgb(0, 0, 0);">TxValue</span><span class="float-end">60</span></h4>
+                                    <div class="progress mb-4" style="background: rgb(255,255,255);">
+                                        <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="visually-hidden">60</span></div>
+                                    </div>
+                                    <h4 class="small fw-bold"><span style="color: rgb(0, 0, 0);">Rank</span><span class="float-end">80</span></h4>
+                                    <div class="progress mb-4" style="background: rgb(249,249,249);">
+                                        <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="visually-hidden">80</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow mb-4">
+                                <ul class="list-group list-group-flush"></ul>
+                            </div>
+                        </div> -->
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-white bg-primary shadow">
+                                        <div class="card-body text-center"><a class="text-center link-light" href="https://app.mav.xyz/?chain=324" style="font-size: 22px;">Maverick Protocol</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center"><a class="text-center link-light" href="https://kyberswap.com/swap/zksync" style="font-size: 22px;">KyberSwap</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center bg-info"><a class="text-center link-light" href="https://pancakeswap.finance/swap?chain=zkSync" style="font-size: 22px;">PancakeSwap</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center bg-warning"><a class="text-center link-light" href="https://app.1inch.io/#/324/simple/swap/ETH/USDC" style="font-size: 22px;">1inch</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center bg-danger"><a class="text-center link-light" href="https://izumi.finance/trade/swap" style="font-size: 22px;">Izumi</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center bg-dark"><a class="text-center link-light" href="https://syncswap.xyz/swap" style="font-size: 22px;">SyncSwap</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center bg-secondary"><a class="text-center link-light" href="https://app.mute.io/swap" style="font-size: 22px;">Mute</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center bg-info"><a class="text-center link-light" href="https://app.aboard.exchange/futures/zksync/#/" style="font-size: 22px;">Aboard</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center bg-white"><a class="text-center link-light" href="https://app.para.space/?chain=zksync_era" style="font-size: 22px;"><span style="color: rgb(0, 0, 0);">ParaSpace</span></a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card text-success bg-success shadow">
+                                        <div class="card-body text-center bg-success"><a class="text-center link-light" href="https://app.zkex.com/trade/ETH/USD" style="font-size: 22px;">Zkex</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+<script src="assets/js/index.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/aos.min.js"></script>
+<script src="assets/js/chart.min.js"></script>
+<script src="assets/js/bs-init.js"></script>
+<script src="assets/js/theme.js"></script>
+</body>
+</html>
+{{end}}

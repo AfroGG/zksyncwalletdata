@@ -1,0 +1,109 @@
+{{define "rule.html"}}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Rule</title>
+    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+
+
+</head>
+
+    <div id="wrapper">
+        <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-clipboard-data">
+                            <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"></path>
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"></path>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"></path>
+                        </svg></div>
+                    <div class="sidebar-brand-text mx-3"><span><em>Zksync</em></span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="/index"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-table"></i><span>Table</span></a><a class="nav-link" href="/analyze"><i class="far fa-chart-bar"></i>Analyze</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/coffee"><i class="fas fa-coffee"></i><span>Coffee</span></a>
+                    <li class="nav-item"><a class="nav-link active" href="/rule"><i class="fas fa-book"></i><span>Rule</span></a>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                    
+                <nav class="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">                  
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="navbar-nav flex-nowrap ms-auto">             
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="me-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1"></li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow">
+                            <a href="https://twitter.com/lokiever11" target="_blank" class="btn btn-primary" style="margin: 12px;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                </div>
+                <div class="center-contentrule">
+                    <div class="text-centerrule">
+                        <h1 style="color: black;">Score Rules</h1>
+                        <h2>zksync_era network</h2>
+                        <p>Bridge funds to the zksync era network  score + 1</p>
+                        <p>Completed 20 transactions on zksync era network  score + 1</p>
+                        <p>Completed 50 transactions on zksync era network  score + 1</p>
+                        <p>Completed 75 transactions on zksync era network  score + 1</p>
+                        <p>Completed 100 transactions on zksync era network  score + 1</p>
+                        <p>The total transaction value exceeds 10,000  score + 1</p>
+                        <p>The total transaction value exceeds 50,000  score + 1</p>
+                        <p>The total transaction value exceeds 250,000  score + 1</p>
+                        <p>Traded in 8 distinct weeks  score + 1</p>
+                        <p>Traded in 15 distinct weeks  score + 1</p>
+                        <p>Traded in 20 distinct weeks  score + 1</p>
+                        <h2>zksync_lite network</h2>
+                        <p>Bridge funds to the zksync lite network  score + 1</p>
+                        <p>Completed 5 transactions on zksync era network  score + 1</p>
+                        <p>Completed 15 transactions on zksync era network  score + 1</p>
+                        <p>Completed 30 transactions on zksync era network  score + 1</p>
+                        <p>Completed 100 transactions on zksync era network  score + 1</p>
+                        <p>The total transaction value exceeds 10,000  score + 1</p>
+                        <p>The total transaction value exceeds 50,000  score + 1</p>
+                        <p>The total transaction value exceeds 250,000  score + 1</p>
+                        <p>Traded in 3 distinct months  score + 1</p>
+                        <p>Traded in 6 distinct months  score + 1</p>
+                        <p>Traded in 9 distinct months  score + 1</p>
+                        <p>If the assets on both networks (only counting eth and usdc) are less than 10u  score - 1</p>
+                    </div>
+                </div> 
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © KYW 2023</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
+{{end}}

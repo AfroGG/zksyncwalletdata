@@ -1,0 +1,267 @@
+.sidebar.sidebar-dark.accordion.bg-gradient-primary {
+  background-color: black;
+  background-image: linear-gradient(180deg, #000000 10%, #000000 100%);
+  background-size: cover;
+}
+
+.py-0search {
+  background-color: #000000;
+}
+
+.fas.fa-user-alt.fa-fw {
+  color: var(--bs-emphasis-color);
+}
+
+.fas.fa-user.fa-fw {
+  color: #000000;
+}
+
+.btn {
+  background: #000000;
+}
+
+:root, [data-bs-theme=light] {
+  --bs-secondary-bg: #000000;
+}
+
+
+.table tbody {
+  color: #000;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%; /* 调整宽度 */
+  max-width: 400px; /* 可选的最大宽度，根据需要进行调整 */
+  margin: 0 auto; /* 居中 */ /* 垂直居中内容 */
+  justify-content: center; /* 水平居中内容 */
+}
+
+.loader-container {
+  margin-bottom: 10px; /* 调整图标和文本之间的间距 */
+}
+
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 使内容垂直居中 */
+}
+
+.text-center {
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 0 auto; /* 水平居中 */
+}
+
+p {
+  margin: 10px 0;
+}
+
+.table-container {
+  max-height: 800px; /* 设置最大高度，使表格有滚动条 */
+  overflow: auto; /* 显示滚动条 */
+ }
+thead {
+position: sticky;
+top: 0; /* 将<thead>固定在顶部 */
+background-color: #fff; /* 设置背景颜色以遮挡滚动的内容 */
+ }
+.pagination{
+    position: relative;
+    left: 600px;
+}
+.pagination ul{
+    display: flex;
+    background: #fff;
+    padding: 8px;
+    border: 50px;
+}
+.pagination ul li{
+    list-style: none;
+    line-height: 45px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+}
+.pagination ul li.numb{
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    margin: 0 3px;
+}
+.pagination ul li.dots{
+    font-size: 22px;
+    cursor: default;
+}
+.pagination ul li.btn{
+    padding: 0 20px;
+
+}
+.pagination ul li.prev{
+    border-radius: 25px 5px 5px 25px;
+}
+.pagination ul li.next{
+    border-radius: 5px 25px 25px 5px;
+}
+.pagination ul li.active,
+.pagination ul li.numb:hover,
+.pagination ul li.btn:hover{
+    color: #fff;
+    background: black;
+}
+
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+ flex-direction: column;
+ gap: 10px;
+ z-index: 1000;
+}
+
+.btn-floating {
+ width: 45px;
+  height: 45px;
+ border-radius: 50%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 18px;
+ cursor: pointer;
+ transition: background-color 0.3s ease;
+}
+
+.btn-floating:hover {
+background-color: #007bff;
+color: #fff; 
+}
+
+
+.center-contentrule {
+  text-align: center;
+  margin: 20px;
+}
+
+.text-centerrule {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  display: inline-block;
+  text-align: left;
+}
+
+h1 {
+  color: black;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: black;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+p {
+  color: black;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.query-data-display {
+  position: absolute;
+  top: 60px; 
+  left: 30px; 
+  z-index: 1; 
+}
+
+.ant-table-cell {
+  text-align: center;
+  font-size: 15px;
+  width: 120px;
+}
+
+.ant-table-small .ant-table-cell, 
+.ant-table-small .ant-table-thead > tr > th {
+padding: 4px 4px !important;
+font-size: 14px !important;
+}
+
+.ant-table-small .ant-table-row {
+  line-height: 1.2;
+}
+
+.ant-table {
+  font-weight: 600;
+}
+
+
+.chart-and-data {
+  display: flex; /* 使用弹性布局 */
+  align-items: center; /* 垂直居中对齐 */
+}
+
+.chart-area {
+  flex: 1; /* 占据剩余空间 */
+  /* 其他 chart-area 的样式 */
+}
+
+.data-display {
+  background-color: #ffffff;
+  margin-left: -200px;
+}
+#DataDisplay ul li {
+  color: #000000; /* 黑色 */
+}
+
+a {
+  text-decoration: none;
+}

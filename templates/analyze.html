@@ -1,0 +1,284 @@
+{{define "analyze.html"}}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Analyze</title>
+    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div id="loadingModal" class="modal">
+            <div class="modal-content">
+                <div class="loader-container">
+                    <div class="loader"></div>
+                </div>
+                <p>Loading...</p>
+            </div>
+        </div>              
+        <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-clipboard-data">
+                            <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"></path>
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"></path>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"></path>
+                        </svg></div>
+                    <div class="sidebar-brand-text mx-3"><span><em>Zksync</em></span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="/index"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="/table"><i class="fas fa-table"></i><span>Table</span></a><a class="nav-link active" href="/analyze"><i class="far fa-chart-bar"></i>Analyze</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/coffee"><i class="fas fa-coffee"></i><span>Coffee</span></a>
+                    <li class="nav-item"><a class="nav-link" href="/rule"><i class="fas fa-book"></i><span>Rule</span></a>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="me-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1"></li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow">
+                            <a href="https://twitter.com/lokiever11" target="_blank" class="btn btn-primary" style="margin: 12px;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <form id="myForm" action="/survey" method="get" autocomplete="off" class="surveyInfo"></form>
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0"><strong><em>Analyze</em></strong></h3><button id="analyzeButton" class="btn btn-primary btn-sm d-none d-sm-inline-block" type="submit">查询</button>
+                    </div>
+                    <div class="row">                 
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">交易次数</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="nonce" id ="nonce" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">Eth余额</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="ethbalance" id = "ethbalance" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">usdc余额</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="usdcbalance" id="usdcbalance" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">活跃周数</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="activeweeks" id="activeweeks" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">活跃天数</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="activedays" id="activedays" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">交易金额</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="txvalue" id="txvalue" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">zklite_交易次数</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="zklite_nonce" id="zklite_nonce" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">zklite_活跃月数</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="zklite_month" id="zklite_month" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">zklite_活跃周数</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="zklite_week" id="zklite_week" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">zklite_交易金额</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="zklite_txvalue" id="zklite_txvalue" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">zklite_eth余额</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="zklite_eth" id="zklite_eth" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-uppercase fs-5 text-black"  style="white-space: nowrap;">zklite_usdc余额</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="fs-6">大于</span></div>
+                                        </div>
+                                        <div class="col-auto"><input type="text" name="zklite_usdc" id="zklite_usdc" value="0"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-8">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0"><span style="color: rgb(0, 0, 0);">Overview</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-and-data">
+                                    <div id="queryDataDisplay" class="query-data-display"></div> 
+                                    <div class="chart-area"><canvas id="myChart5" data-bss-chart=""></canvas></div>
+                                    <div id="DataDisplay" class="data-display"></div>
+                                    </div>
+                                    <div class="text-center small mt-4"><span class="me-2"><i class="fas fa-circle text-success"></i>&nbsp;eligible</span><span class="me-2"><i class="fas fa-circle text-danger"></i>&nbsp;unqualified</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0"><span style="color: rgb(0, 0, 0);">My Eligible Wallets Count</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area"><canvas canvas id="myChart6"></canvas></div>
+                                    <div class="text-center small mt-4"><span class="me-2"><i class="fas fa-circle text-success"></i>&nbsp;Meet requ</span><span class="me-2"><i class="fas fa-circle text-info"></i>&nbsp;Not meet</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    
+    
+    <script src="assets/js/analyze.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
+{{end}}
