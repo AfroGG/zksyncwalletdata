@@ -1,0 +1,156 @@
+info:
+  contact: {}
+paths:
+  /AddUser:
+    get:
+      parameters:
+      - description: 邮箱
+        in: query
+        name: email
+        type: string
+      - description: 密码
+        in: query
+        name: password
+        type: string
+      - description: 确认密码
+        in: query
+        name: repassword
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 新增用户
+      tags:
+      - 用户
+  /BatchQuery:
+    get:
+      parameters:
+      - description: 地址
+        in: formData
+        name: address
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 查询钱包
+      tags:
+      - 用户
+  /DeleteUser:
+    get:
+      parameters:
+      - description: id
+        in: query
+        name: id
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 删除用户
+      tags:
+      - 用户
+  /FindUserByEmailAndPwd:
+    post:
+      parameters:
+      - description: email
+        in: query
+        name: email
+        type: string
+      - description: password
+        in: query
+        name: password
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 用户登录
+      tags:
+      - 用户
+  /UpdateUser:
+    post:
+      parameters:
+      - description: 邮箱
+        in: formData
+        name: email
+        type: string
+      - description: 密码
+        in: formData
+        name: password
+        type: string
+      - description: 地址
+        in: formData
+        name: address
+        type: string
+      responses:
+        "200":
+          description: code","message"}
+          schema:
+            type: string
+      summary: 绑定钱包
+      tags:
+      - 用户
+  /details:
+    get:
+      parameters:
+      - description: 地址
+        in: query
+        name: address
+        type: string
+      responses:
+        "200":
+          description: code","account"}
+          schema:
+            type: string
+      tags:
+      - 地址信息
+  /survey:
+    get:
+      parameters:
+      - description: Nonce值
+        in: query
+        name: nonce
+        type: string
+      - description: 以太坊余额
+        in: query
+        name: ethbalance
+        type: string
+      - description: USDC余额
+        in: query
+        name: usdcbalance
+        type: string
+      - description: 活跃周数
+        in: query
+        name: activeweeks
+        type: string
+      - description: 活跃天数
+        in: query
+        name: activedays
+        type: string
+      - description: 总手续费
+        in: query
+        name: totalfee
+        type: string
+      - description: 开始日期
+        in: query
+        name: startday
+        type: string
+      - description: 交易价值
+        in: query
+        name: txvalue
+        type: string
+      responses:
+        "200":
+          description: 'code": 200, "message": "查询成功"}'
+          schema:
+            type: string
+      summary: 查询钱包
+      tags:
+      - 用户
+swagger: "2.0"
